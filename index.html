@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cirenne — Alpine Glacial Skincare, Sourced by Altitude</title>
+<meta name="description" content="Cirenne is Alpine-sourced skincare, traceable to the slope it came from. Glacial botanicals formulated into a four-step renewal ritual." />
+<meta name="theme-color" content="#1B1712" />
+
+<meta property="og:title" content="Cirenne — Alpine Glacial Skincare" />
+<meta property="og:description" content="Sourced at 2,400 meters. Renewed at the surface." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ HEADER / NAV ============ -->
+<header class="site-header" id="siteHeader">
+  <div class="nav-inner">
+    <a href="#top" class="logo">CIRENNE</a>
+
+    <nav class="nav-links" id="navLinks" aria-label="Primary">
+      <a href="#philosophy">Philosophy</a>
+      <a href="#ingredients">Ingredients</a>
+      <a href="#ritual">Rituals</a>
+      <a href="#products">Products</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="btn btn-dark btn-small" id="shopBtn">Shop</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#philosophy">Philosophy</a>
+    <a href="#ingredients">Ingredients</a>
+    <a href="#ritual">Rituals</a>
+    <a href="#products">Products</a>
+    <a href="#faq">FAQ</a>
+    <button class="btn btn-dark" id="mobileShopBtn">Shop the Ritual</button>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Alpine Sourced · Since the source</p>
+        <h1 class="hero-title">
+          Sourced at 2,400 meters.<br />
+          <span class="italic-gold">Renewed at the surface.</span>
+        </h1>
+        <p class="hero-sub">
+          Glacial botanicals, harvested at altitude, formulated into a
+          four-step ritual for skin that has forgotten what rested feels like.
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-dark">Shop the Ritual</button>
+          <button class="btn btn-outline">Our Story</button>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <svg width="0" height="0" style="position:absolute">
+          <defs>
+            <filter id="goo">
+              <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="7" result="noise">
+                <animate attributeName="baseFrequency" dur="22s" values="0.010;0.018;0.010" repeatCount="indefinite" />
+              </feTurbulence>
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="34" />
+            </filter>
+          </defs>
+        </svg>
+        <div class="blob-wrap" id="blobWrap">
+          <div class="blob" id="blob"></div>
+          <div class="droplet"></div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true"><span></span></div>
+  </section>
+
+  <!-- ============ PHILOSOPHY ============ -->
+  <section class="philosophy" id="philosophy">
+    <div class="container narrow reveal">
+      <p class="eyebrow center">Philosophy</p>
+      <h2 class="section-title center">
+        Water remembers where it's been. Ours has spent centuries moving
+        through granite, ice, and root before it ever reached your skin.
+      </h2>
+      <p class="body-text center">
+        We don't formulate around trends. We formulate around altitude —
+        the specific stress, cold, and mineral content that make Alpine
+        botanicals behave differently than anything grown at sea level.
+        Every batch is traceable to the slope it came from.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ INGREDIENTS ============ -->
+  <section class="ingredients" id="ingredients">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow center">Ingredients, by altitude</p>
+        <h2 class="section-title center">The higher the slope, the harder the plant works.</h2>
+      </div>
+
+      <div class="grid-3">
+        <article class="card ingredient-card reveal">
+          <div class="ingredient-alt">3,000M</div>
+          <h3>Edelweiss Stem Cell</h3>
+          <p>Harvested above the treeline, where UV stress is highest. Provides antioxidant defense against environmental oxidation.</p>
+        </article>
+
+        <article class="card ingredient-card reveal">
+          <div class="ingredient-alt">2,400M</div>
+          <h3>Glacial Spring Water</h3>
+          <p>Mineral-dense meltwater filtered through granite. Delivers deep, lasting hydration without residue.</p>
+        </article>
+
+        <article class="card ingredient-card reveal">
+          <div class="ingredient-alt">1,800M</div>
+          <h3>Alpine Rose Extract</h3>
+          <p>Grown in thin, cold air that slows the plant's own metabolism. Supports the skin's barrier and calms redness.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRODUCTS ============ -->
+  <section class="products" id="products">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow center light">The Line</p>
+        <h2 class="section-title center light">Three products. One ritual.</h2>
+      </div>
+
+      <div class="grid-3">
+        <article class="card product-card tilt-card reveal" data-tilt data-price="$88" data-name="La Sève" data-kind="Renewal Serum">
+          <div class="product-bottle bottle-gold"></div>
+          <p class="product-kind">Renewal Serum</p>
+          <h3 class="product-name">La Sève</h3>
+          <p class="product-note">Concentrated Edelweiss and Alpine Rose for daily barrier renewal.</p>
+          <div class="product-footer">
+            <span class="product-price">$88</span>
+            <button class="btn btn-small btn-outline-light add-to-cart">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="card product-card tilt-card reveal" data-tilt data-price="$102" data-name="Le Baume" data-kind="Barrier Cream">
+          <div class="product-bottle bottle-sage"></div>
+          <p class="product-kind">Barrier Cream</p>
+          <h3 class="product-name">Le Baume</h3>
+          <p class="product-note">A rich, glacial-water cream that seals in hydration overnight.</p>
+          <div class="product-footer">
+            <span class="product-price">$102</span>
+            <button class="btn btn-small btn-outline-light add-to-cart">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="card product-card tilt-card reveal" data-tilt data-price="$46" data-name="L'Eau" data-kind="Hydrating Mist">
+          <div class="product-bottle bottle-rose"></div>
+          <p class="product-kind">Hydrating Mist</p>
+          <h3 class="product-name">L'Eau</h3>
+          <p class="product-note">Pure glacial spring water in a fine, cooling mist for any time of day.</p>
+          <div class="product-footer">
+            <span class="product-price">$46</span>
+            <button class="btn btn-small btn-outline-light add-to-cart">Add to Cart</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RITUAL ============ -->
+  <section class="ritual" id="ritual">
+    <div class="container narrow">
+      <div class="section-head reveal">
+        <p class="eyebrow center">The Ritual</p>
+        <h2 class="section-title center">Four steps, in order, every morning.</h2>
+      </div>
+
+      <ol class="ritual-list">
+        <li class="ritual-item reveal">
+          <span class="ritual-step">01</span>
+          <span class="ritual-name">Cleanse</span>
+          <span class="ritual-detail">Mineral cleanser lifts impurity without disturbing the barrier.</span>
+        </li>
+        <li class="ritual-item reveal">
+          <span class="ritual-step">02</span>
+          <span class="ritual-name">Mist</span>
+          <span class="ritual-detail">L'Eau Mist primes skin with glacial water and light humectants.</span>
+        </li>
+        <li class="ritual-item reveal">
+          <span class="ritual-step">03</span>
+          <span class="ritual-name">Serum</span>
+          <span class="ritual-detail">La Sève concentrates active botanicals into the first layer of renewal.</span>
+        </li>
+        <li class="ritual-item reveal">
+          <span class="ritual-step">04</span>
+          <span class="ritual-name">Cream</span>
+          <span class="ritual-detail">Le Baume seals hydration and reinforces the barrier overnight.</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow center">From the Ritual</p>
+        <h2 class="section-title center">Skin, in their own words.</h2>
+      </div>
+
+      <div class="grid-3">
+        <blockquote class="card testimonial-card reveal">
+          <p>"The texture disappears into skin in a way I haven't felt from a serum before. My complexion looks rested, not just hydrated."</p>
+          <cite>— A. Meunier, Lyon</cite>
+        </blockquote>
+
+        <blockquote class="card testimonial-card reveal">
+          <p>"I was skeptical of the altitude story until I saw the difference in redness after three weeks. It's subtle, and it's real."</p>
+          <cite>— T. Okafor, Toronto</cite>
+        </blockquote>
+
+        <blockquote class="card testimonial-card reveal">
+          <p>"Unfussy packaging, unfussy routine, and my skin has never looked better in winter."</p>
+          <cite>— S. Lindqvist, Malmö</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="faq" id="faq">
+    <div class="container narrow">
+      <div class="section-head reveal">
+        <p class="eyebrow center">Questions</p>
+        <h2 class="section-title center">Before you begin the ritual.</h2>
+      </div>
+
+      <div class="accordion" id="accordion">
+        <div class="accordion-item reveal">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>Is Cirenne suitable for sensitive skin?</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-panel">
+            <p>Yes. All formulas are fragrance-light and tested for barrier compatibility. We recommend patch-testing Le Baume first if you have reactive skin.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item reveal">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>How is the glacial water sourced?</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-panel">
+            <p>Meltwater is collected at 2,400 meters from a licensed, protected source and filtered through granite before formulation. Every batch is traceable to its harvest date and location.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item reveal">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>What order should I use the ritual in?</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-panel">
+            <p>Cleanse, mist, serum, then cream — in that order, morning and evening. Allow each layer roughly thirty seconds to absorb before the next.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item reveal">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>Do you ship internationally?</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-panel">
+            <p>We currently ship to the EU, UK, US, and Canada, with more regions added quarterly. Shipping times and rates are calculated at checkout.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NEWSLETTER ============ -->
+  <section class="newsletter">
+    <div class="container narrow center reveal">
+      <p class="eyebrow center">Join the Source</p>
+      <h2 class="section-title center">First word on new harvests, limited batches, and the science between them.</h2>
+
+      <form class="newsletter-form" id="newsletterForm" novalidate>
+        <div class="form-row">
+          <label for="newsletterEmail" class="visually-hidden">Email address</label>
+          <input type="email" id="newsletterEmail" name="email" placeholder="you@email.com" required />
+          <button type="submit" class="btn btn-dark">Subscribe</button>
+        </div>
+        <p class="form-message" id="newsletterMessage" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ CART DRAWER ============ -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+  <div class="cart-header">
+    <h2>Your Bag</h2>
+    <button class="cart-close" id="cartClose" aria-label="Close cart">&times;</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <p class="cart-empty" id="cartEmpty">Your bag is empty.</p>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total-row">
+      <span>Subtotal</span>
+      <span id="cartTotal">$0</span>
+    </div>
+    <button class="btn btn-dark btn-full" id="checkoutBtn">Checkout</button>
+  </div>
+</aside>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <p class="logo light">CIRENNE</p>
+      <p class="footer-tagline">Alpine-sourced skincare, traceable to the slope it came from.</p>
+    </div>
+
+    <div class="footer-col">
+      <p class="footer-heading">Shop</p>
+      <a href="#products">La Sève</a>
+      <a href="#products">Le Baume</a>
+      <a href="#products">L'Eau</a>
+      <a href="#products">The Ritual Set</a>
+    </div>
+
+    <div class="footer-col">
+      <p class="footer-heading">Brand</p>
+      <a href="#philosophy">Philosophy</a>
+      <a href="#ingredients">Ingredients</a>
+      <a href="#">Journal</a>
+      <a href="#">Sourcing</a>
+    </div>
+
+    <div class="footer-col">
+      <p class="footer-heading">Support</p>
+      <a href="#">Contact</a>
+      <a href="#">Shipping</a>
+      <a href="#">Returns</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </div>
+  <p class="footer-bottom">© 2026 Cirenne. All rights reserved.</p>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+<script src="script.js"></script>
+</body>
+                  </html>
+  
