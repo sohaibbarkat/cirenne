@@ -684,3 +684,51 @@ input:focus-visible {
     scroll-behavior: auto !important;
   }
   }
+/*==============================
+  PREMIUM HERO IMAGE
+==============================*/
+
+.hero-image{
+position:relative;
+display:flex;
+justify-content:center;
+align-items:center;
+width:100%;
+min-height:600px;
+}
+
+.hero-bottle{
+width:min(420px,90%);
+position:relative;
+z-index:2;
+animation:floatBottle 6s ease-in-out infinite;
+filter:drop-shadow(0 40px 80px rgba(0,0,0,.28));
+}
+
+.hero-glow{
+position:absolute;
+width:520px;
+height:520px;
+background:radial-gradient(circle,
+rgba(232,213,175,.65) 0%,
+rgba(232,213,175,.18) 45%,
+transparent 70%);
+filter:blur(50px);
+z-index:1;
+}
+
+@keyframes floatBottle{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-18px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
