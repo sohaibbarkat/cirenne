@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Not Found — CIRENNE</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .notfound {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(180deg, var(--ivory) 0%, var(--soft-beige) 100%);
+  }
+  .notfound__ridge { width: min(60vw, 340px); height: 70px; margin-bottom: 2rem; opacity: 0.6; }
+  .notfound__code { font-family: var(--font-display); font-size: clamp(3rem, 10vw, 6rem); color: var(--matte-black); line-height: 1; }
+  .notfound__title { font-family: var(--font-display); font-style: italic; font-size: clamp(1.3rem, 3vw, 1.8rem); color: var(--graphite); margin: 0.6rem 0 1.6rem; }
+  .notfound__text { max-width: 42ch; opacity: 0.8; margin-bottom: 2.2rem; }
+</style>
+</head>
+<body>
+  <div class="notfound">
+    <svg class="notfound__ridge" viewBox="0 0 400 100" preserveAspectRatio="none">
+      <path d="M0,80 L40,55 L75,68 L110,30 L150,58 L190,20 L230,50 L265,42 L300,15 L340,48 L400,35" fill="none" stroke="#B8985A" stroke-width="1.2"/>
+    </svg>
+    <span class="notfound__code">404</span>
+    <p class="notfound__title">Even at altitude, some paths disappear.</p>
+    <p class="notfound__text">The page you are looking for has moved, or never existed above the treeline. Let us guide you back to the house.</p>
+    <a href="index.html" class="btn btn--dark">Return to CIRENNE</a>
+  </div>
+</body>
+</html>
