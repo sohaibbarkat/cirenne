@@ -1,880 +1,492 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>CIRENNE | Luxury Alpine Skincare</title>
-
-    <meta name="description"
-        content="Luxury Alpine Skincare inspired by nature, science and timeless beauty.">
-
-    <meta name="theme-color" content="#F6F2EA">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CIRENNE — Alpine Botanical Skincare</title>
+<meta name="description" content="CIRENNE is a luxury alpine botanical skincare house, formulated at altitude from rare glacial flora. Discover serums, oils, and rituals born of the high mountains.">
+<meta name="keywords" content="luxury skincare, alpine botanical, natural skincare, glacial water skincare, luxury beauty, CIRENNE">
+<meta name="author" content="CIRENNE">
+<meta property="og:title" content="CIRENNE — Alpine Botanical Skincare">
+<meta property="og:description" content="Formulated at altitude. A luxury skincare house rooted in rare alpine botanicals and glacial water.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/images/hero-bottle.png">
+<meta name="theme-color" content="#3A3835">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
 
-<!-- ===========================
-PRELOADER
-=========================== -->
+<!-- ================= LOADER ================= -->
+<div class="loader" id="loader" aria-hidden="true">
+  <svg class="loader__ridge" viewBox="0 0 400 100" preserveAspectRatio="none">
+    <path id="ridgePath" d="M0,80 L40,55 L75,68 L110,30 L150,58 L190,20 L230,50 L265,42 L300,15 L340,48 L400,35" fill="none" stroke="#B8985A" stroke-width="1.2"/>
+  </svg>
+  <span class="loader__word">CIRENNE</span>
+</div>
 
-<div id="preloader">
+<!-- ================= COOKIE BANNER ================= -->
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie notice">
+  <p>CIRENNE uses cookies to refine your experience of the house. <a href="#" class="cookie-banner__link">Learn more</a></p>
+  <div class="cookie-banner__actions">
+    <button class="btn btn--ghost" id="cookieDecline">Decline</button>
+    <button class="btn btn--dark" id="cookieAccept">Accept</button>
+  </div>
+</div>
 
-    <div class="loader-logo">
+<!-- ================= NAVIGATION ================= -->
+<header class="nav" id="siteNav">
+  <div class="nav__row">
+    <button class="nav__icon-btn nav__menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
 
-        CIRENNE
+    <nav class="nav__desktop" aria-label="Primary">
+      <a href="#about">The House</a>
+      <a href="#ingredients">Ingredients</a>
+      <a href="#collection">Collection</a>
+      <a href="#philosophy">Philosophy</a>
+    </nav>
 
+    <a href="#top" class="nav__logo">CIRENNE</a>
+
+    <nav class="nav__desktop nav__desktop--right" aria-label="Secondary">
+      <a href="#journal">Editorial</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="nav__icons">
+      <button class="nav__icon-btn" id="searchBtn" aria-label="Open search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="nav__icon-btn" id="wishlistBtn" aria-label="Open wishlist">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 10-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg>
+        <span class="nav__badge" id="wishlistCount">0</span>
+      </button>
+      <button class="nav__icon-btn" id="cartBtn" aria-label="Open shopping bag">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 016 0"/></svg>
+        <span class="nav__badge" id="cartCount">0</span>
+      </button>
     </div>
-
-</div>
-
-<!-- ===========================
-CURSOR
-=========================== -->
-
-<div class="cursor"></div>
-
-<div class="cursor2"></div>
-
-<!-- ===========================
-SCROLL PROGRESS
-=========================== -->
-
-<div class="progress-bar"></div>
-
-<!-- ===========================
-HEADER
-=========================== -->
-
-<header class="header">
-
-<div class="container">
-
-<a href="#" class="logo">
-
-CIRENNE
-
-</a>
-
-<nav>
-
-<ul>
-
-<li><a href="#">Home</a></li>
-
-<li><a href="#">Products</a></li>
-
-<li><a href="#">Ingredients</a></li>
-
-<li><a href="#">Journal</a></li>
-
-<li><a href="#">Contact</a></li>
-
-</ul>
-
-</nav>
-
-<a href="#" class="shop-btn">
-
-Shop Now
-
-</a>
-
-</div>
-
+  </div>
 </header>
 
-<!-- ===========================
-HERO
-=========================== -->
-
-<section class="hero">
-
-<div class="hero-bg">
-
-<img src="assets/images/mountain-01.jpg" alt="Luxury Background">
-
+<!-- ================= MOBILE NAV ================= -->
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <nav aria-label="Mobile Primary">
+    <a href="#about">The House</a>
+    <a href="#ingredients">Ingredients</a>
+    <a href="#collection">Collection</a>
+    <a href="#philosophy">Philosophy</a>
+    <a href="#journal">Editorial</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <p class="mobile-nav__tag">Formulated at 2,400m.</p>
 </div>
 
-<div class="overlay"></div>
-
-<div class="hero-content">
-
-<p class="hero-tag">
-
-ALPINE LUXURY SKINCARE
-
-</p>
-
-<h1>
-
-Beauty Inspired<br>
-
-By The Alps
-
-</h1>
-
-<p>
-
-Pure botanical skincare crafted from glacial water,
-rare alpine plants and luxurious formulations.
-
-</p>
-
-<div class="hero-buttons">
-
-<a href="#" class="btn-primary">
-
-Shop Collection
-
-</a>
-
-<a href="#" class="btn-secondary">
-
-Discover Story
-
-</a>
-
-</div>
-
-</div>
-
-<div class="hero-product">
-
-<img src="assets/images/hero-bottle.png" alt="Luxury Bottle">
-
-</div>
-
-</section>
-<!-- ===========================
-PHILOSOPHY
-=========================== -->
-
-<section class="philosophy">
-
-<div class="container">
-
-<div class="section-title">
-
-<span>OUR PHILOSOPHY</span>
-
-<h2>
-Luxury begins where nature meets science.
-</h2>
-
-<p>
-Every Cirenne formula is inspired by the untouched Alps.
-Rare botanical extracts, glacial water and advanced skin science
-combine to create timeless skincare that feels elegant,
-minimal and incredibly effective.
-</p>
-
-</div>
-
-<div class="philosophy-grid">
-
-<div class="philosophy-card">
-
-<h3>100%</h3>
-
-<h4>Natural Botanicals</h4>
-
-<p>
-Hand-selected alpine plants rich in antioxidants.
-</p>
-
-</div>
-
-<div class="philosophy-card">
-
-<h3>24H</h3>
-
-<h4>Deep Hydration</h4>
-
-<p>
-Long-lasting moisture with luxurious texture.
-</p>
-
-</div>
-
-<div class="philosophy-card">
-
-<h3>50K+</h3>
-
-<h4>Happy Customers</h4>
-
-<p>
-Trusted worldwide for premium skincare rituals.
-</p>
-
-</div>
-
-<div class="philosophy-card">
-
-<h3>Swiss</h3>
-
-<h4>Inspired Formula</h4>
-
-<p>
-Minimal ingredients with maximum performance.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-<!-- ===========================
-INGREDIENTS
-=========================== -->
-
-<section class="ingredients">
-
-<div class="container">
-
-<div class="section-title">
-
-<span>PURE INGREDIENTS</span>
-
-<h2>
-Nature's most precious ingredients.
-</h2>
-
-<p>
-Every ingredient is carefully sourced from the Alpine region,
-bringing purity, hydration and protection to your skin.
-</p>
-
-</div>
-
-<div class="ingredients-grid">
-
-<div class="ingredient-card">
-
-<img src="assets/images/water-01.jpg" alt="Glacial Water">
-
-<h3>Glacial Water</h3>
-
-<p>
-Crystal-clear alpine water naturally rich in minerals for long-lasting hydration.
-</p>
-
-</div>
-
-<div class="ingredient-card">
-
-<img src="assets/images/stone-01.jpg" alt="Minerals">
-
-<h3>Mineral Complex</h3>
-
-<p>
-Natural minerals strengthen the skin barrier and restore healthy radiance.
-</p>
-
-</div>
-
-<div class="ingredient-card">
-
-<img src="assets/images/silk-01.jpg" alt="Silk Protein">
-
-<h3>Silk Protein</h3>
-
-<p>
-Silk proteins leave skin soft, smooth and beautifully nourished.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ===========================
-PARALLAX IMAGE
-=========================== -->
-
-<section class="parallax-image">
-
-<img src="assets/images/mountain-02.jpg" alt="Luxury Mountain">
-
-<div class="parallax-overlay">
-
-<h2>
-Beauty Crafted At<br>
-High Altitude
-</h2>
-
-<p>
-Luxury skincare inspired by the untouched beauty of the Alps.
-</p>
-
-</div>
-
-</section>
-<!-- ===========================
-PRODUCTS
-=========================== -->
-
-<section class="products">
-
-<div class="container">
-
-<div class="section-title">
-
-<span>BEST SELLERS</span>
-
-<h2>
-Discover Our Signature Collection
-</h2>
-
-<p>
-Crafted with luxurious botanical ingredients and Alpine glacial water,
-each product is designed to restore, protect and illuminate your skin.
-</p>
-
-</div>
-
-<div class="products-grid">
-
-<!-- Product 1 -->
-
-<div class="product-card">
-
-<div class="product-image">
-
-<img src="assets/images/hero-bottle.png" alt="Luxury Serum">
-
-</div>
-
-<div class="product-content">
-
-<h3>Alpine Renewal Serum</h3>
-
-<p>
-Intense hydration with Edelweiss Stem Cells and Glacial Water.
-</p>
-
-<h4>$89</h4>
-
-<a href="#" class="product-btn">
-Add To Cart
-</a>
-
-</div>
-
-</div>
-
-<!-- Product 2 -->
-
-<div class="product-card">
-
-<div class="product-image">
-
-<img src="assets/images/hero-bottle.png" alt="Luxury Cream">
-
-</div>
-
-<div class="product-content">
-
-<h3>Luxury Barrier Cream</h3>
-
-<p>
-Rich nourishing cream that restores elasticity and smoothness.
-</p>
-
-<h4>$96</h4>
-
-<a href="#" class="product-btn">
-Add To Cart
-</a>
-
-</div>
-
-</div>
-
-<!-- Product 3 -->
-
-<div class="product-card">
-
-<div class="product-image">
-
-<img src="assets/images/hero-bottle.png" alt="Luxury Mist">
-
-</div>
-
-<div class="product-content">
-
-<h3>Hydrating Mist</h3>
-
-<p>
-Refreshes skin instantly with mineral-rich Alpine water.
-</p>
-
-<h4>$54</h4>
-
-<a href="#" class="product-btn">
-Add To Cart
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ===========================
-LUXURY BANNER
-=========================== -->
-
-<section class="luxury-banner">
-
-<div class="banner-image">
-
-<img src="assets/images/mountain-03.jpg" alt="Luxury Background">
-
-</div>
-
-<div class="banner-overlay">
-
-<h2>
-Luxury Is A Daily Ritual
-</h2>
-
-<p>
-Designed for modern skincare with timeless elegance.
-</p>
-
-<a href="#" class="btn-primary">
-
-Explore Collection
-
-</a>
-
-</div>
-
-</section>
-<!-- ===========================
-TESTIMONIALS
-=========================== -->
-
-<section class="testimonials">
-
-<div class="container">
-
-<div class="section-title">
-
-<span>TESTIMONIALS</span>
-
-<h2>
-Loved Around The World
-</h2>
-
-<p>
-Thousands of customers trust Cirenne for radiant, healthy skin.
-</p>
-
-</div>
-
-<div class="testimonials-grid">
-
-<div class="testimonial-card">
-
-<div class="stars">
-★★★★★
-</div>
-
-<p>
-"I've never experienced skincare this luxurious.
-Within weeks my skin looked healthier and brighter."
-</p>
-
-<div class="client">
-
-<img src="assets/images/silk-02.jpg" alt="Customer">
-
-<div>
-
-<h4>Emma Wilson</h4>
-
-<span>New York</span>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="testimonial-card">
-
-<div class="stars">
-★★★★★
-</div>
-
-<p>
-"The packaging, texture and fragrance feel incredibly premium.
-Worth every penny."
-</p>
-
-<div class="client">
-
-<img src="assets/images/water-02.jpg" alt="Customer">
-
-<div>
-
-<h4>Sophia Martin</h4>
-
-<span>London</span>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="testimonial-card">
-
-<div class="stars">
-★★★★★
-</div>
-
-<p>
-"My daily skincare ritual feels like visiting a luxury spa."
-</p>
-
-<div class="client">
-
-<img src="assets/images/stone-02.jpg" alt="Customer">
-
-<div>
-
-<h4>Olivia Brown</h4>
-
-<span>Paris</span>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ===========================
-STATISTICS
-=========================== -->
-
-<section class="statistics">
-
-<div class="container">
-
-<div class="stats-grid">
-
-<div class="stat-box">
-
-<h2>120K+</h2>
-
-<p>Happy Customers</p>
-
-</div>
-
-<div class="stat-box">
-
-<h2>4.9★</h2>
-
-<p>Average Rating</p>
-
-</div>
-
-<div class="stat-box">
-
-<h2>38</h2>
-
-<p>Countries Served</p>
-
-</div>
-
-<div class="stat-box">
-
-<h2>98%</h2>
-
-<p>Repeat Customers</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-<!-- ===========================
-OUR RITUAL
-=========================== -->
-
-<section class="ritual">
-
-<div class="container">
-
-<div class="section-title">
-
-<span>THE RITUAL</span>
-
-<h2>
-A Simple Luxury Routine
-</h2>
-
-<p>
-Only four carefully designed steps for healthy, glowing skin.
-</p>
-
-</div>
-
-<div class="ritual-grid">
-
-<div class="ritual-card">
-
-<div class="step-number">01</div>
-
-<img src="assets/images/water-01.jpg" alt="Cleanse">
-
-<h3>Cleanse</h3>
-
-<p>
-Start with mineral-rich cleansing water to remove impurities.
-</p>
-
-</div>
-
-<div class="ritual-card">
-
-<div class="step-number">02</div>
-
-<img src="assets/images/stone-01.jpg" alt="Treat">
-
-<h3>Treat</h3>
-
-<p>
-Apply concentrated Alpine serum for deep nourishment.
-</p>
-
-</div>
-
-<div class="ritual-card">
-
-<div class="step-number">03</div>
-
-<img src="assets/images/silk-01.jpg" alt="Hydrate">
-
-<h3>Hydrate</h3>
-
-<p>
-Seal moisture with our luxury barrier cream.
-</p>
-
-</div>
-
-<div class="ritual-card">
-
-<div class="step-number">04</div>
-
-<img src="assets/images/mountain-03.jpg" alt="Glow">
-
-<h3>Glow</h3>
-
-<p>
-Wake up with naturally radiant, healthy-looking skin.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ===========================
-NEWSLETTER
-=========================== -->
-
-<section class="newsletter">
-
-<div class="container">
-
-<div class="newsletter-box">
-
-<span>JOIN CIRENNE</span>
-
-<h2>
-Receive Exclusive Beauty Updates
-</h2>
-
-<p>
-Be the first to discover new collections,
-luxury skincare tips and exclusive offers.
-</p>
-
-<form>
-
-<input
-type="email"
-placeholder="Enter your email">
-
-<button type="submit">
-
-Subscribe
-
-</button>
-
-</form>
-
-</div>
-
-</div>
-
-</section>
-<!-- ===========================
-LUXURY FOOTER
-=========================== -->
-
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" aria-label="Introduction">
+    <div class="hero__ridge-wrap" aria-hidden="true">
+      <svg class="hero__ridge" viewBox="0 0 1600 300" preserveAspectRatio="none">
+        <path d="M0,260 L160,190 L280,230 L420,110 L560,210 L700,70 L860,180 L980,150 L1120,50 L1280,175 L1440,120 L1600,150" fill="none" stroke="#B8985A" stroke-width="1"/>
+      </svg>
+    </div>
+    <p class="eyebrow reveal" data-reveal>Alpine Botanical Skincare — Est. Graubünden</p>
+    <h1 class="hero__title reveal" data-reveal>Skin, at the <em>altitude</em><br>of silence.</h1>
+    <p class="hero__sub reveal" data-reveal>Formulated above 2,400 metres, where glacial water meets rare alpine flora untouched by the valley below.</p>
+    <div class="hero__cta reveal" data-reveal>
+      <a href="#collection" class="btn btn--dark magnetic">Discover the Collection</a>
+      <a href="#philosophy" class="btn btn--line magnetic">Our Philosophy</a>
+    </div>
+    <button class="hero__scroll" id="scrollCue" aria-label="Scroll to content">
+      <span></span>
+    </button>
+  </section>
+
+  <!-- ================= BOTTLE SHOWCASE ================= -->
+  <section class="showcase" aria-label="Signature bottle">
+    <div class="showcase__media parallax" data-parallax>
+      <img src="assets/images/hero-bottle.png" alt="CIRENNE Hydrating Serum bottle against alpine light" loading="lazy" onerror="this.style.display='none'">
+    </div>
+    <div class="showcase__text">
+      <p class="eyebrow reveal" data-reveal>The Signature Vessel</p>
+      <h2 class="reveal" data-reveal>Glass drawn from<br>mountain sand.</h2>
+      <p class="reveal" data-reveal>Each vessel is hand-blown in a single-family atelier at the foot of the range we source from — a quiet material honesty that runs through every gesture of the house.</p>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section class="about" id="about" aria-label="About the house">
+    <div class="divider-ridge" aria-hidden="true"></div>
+    <div class="about__grid">
+      <div class="about__image parallax" data-parallax>
+        <img src="assets/images/mountain-01.jpg" alt="Alpine mountain range at dawn" loading="lazy" onerror="this.style.display='none'">
+      </div>
+      <div class="about__content">
+        <p class="eyebrow reveal" data-reveal>The House</p>
+        <h2 class="reveal" data-reveal>Founded on a single conviction: that the highest botanicals demand the lowest intervention.</h2>
+        <p class="reveal" data-reveal>CIRENNE was born in 2011 in a research station 2,400 metres above the valley floor, where our founder, a former glaciologist, began cataloguing the resilience of flora that survive summers of six weeks and winters of nine months.</p>
+        <p class="reveal" data-reveal>What she found became the foundation of every formula we make: ingredients that do not merely tolerate hardship, but are transformed by it.</p>
+        <a href="#philosophy" class="text-link reveal" data-reveal>Read our philosophy →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= INGREDIENTS ================= -->
+  <section class="ingredients" id="ingredients" aria-label="Ingredients">
+    <p class="eyebrow reveal center" data-reveal>Sourced at Altitude</p>
+    <h2 class="section-title reveal center" data-reveal>Four botanicals.<br>One uncompromising standard.</h2>
+    <div class="ingredients__grid">
+      <article class="ingredient-card reveal" data-reveal>
+        <div class="ingredient-card__media">
+          <img src="assets/images/stone-01.jpg" alt="Glacial mineral stone" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <h3>Glacial Water</h3>
+        <p>Drawn from a single moraine spring, mineral-rich and untouched by agricultural runoff for over ten thousand years.</p>
+      </article>
+      <article class="ingredient-card reveal" data-reveal>
+        <div class="ingredient-card__media">
+          <img src="assets/images/water-01.jpg" alt="Alpine spring water" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <h3>Edelweiss Extract</h3>
+        <p>Harvested by hand from protected slopes, prized for antioxidant compounds it produces to survive intense UV exposure.</p>
+      </article>
+      <article class="ingredient-card reveal" data-reveal>
+        <div class="ingredient-card__media">
+          <img src="assets/images/stone-02.jpg" alt="Alpine rock and lichen" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <h3>Arolla Pine Resin</h3>
+        <p>Tapped from trees exceeding four centuries in age, valued for its dense, protective lipid structure.</p>
+      </article>
+      <article class="ingredient-card reveal" data-reveal>
+        <div class="ingredient-card__media">
+          <img src="assets/images/water-02.jpg" alt="Botanical dew droplets" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <h3>Rhodiola Root</h3>
+        <p>An adaptogen that thrives in scree fields, chosen for its documented resilience-building properties.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= BENEFITS ================= -->
+  <section class="benefits" aria-label="Benefits">
+    <div class="benefits__grid">
+      <div class="benefit reveal" data-reveal>
+        <span class="benefit__mark">I</span>
+        <h3>Barrier Resilience</h3>
+        <p>Formulated to reinforce skin's own defences against climate and altitude stress, not merely mask their effects.</p>
+      </div>
+      <div class="benefit reveal" data-reveal>
+        <span class="benefit__mark">II</span>
+        <h3>Slow Absorption</h3>
+        <p>Textures engineered to release actives over hours, mirroring the gradual rhythms of alpine botany itself.</p>
+      </div>
+      <div class="benefit reveal" data-reveal>
+        <span class="benefit__mark">III</span>
+        <h3>Radiance at Rest</h3>
+        <p>A luminosity that reads as health rather than shine — the result of mineral density, not synthetic brighteners.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= COLLECTION ================= -->
+  <section class="collection" id="collection" aria-label="Product collection">
+    <p class="eyebrow reveal center" data-reveal>The Collection</p>
+    <h2 class="section-title reveal center" data-reveal>Six formulas.<br>No compromises.</h2>
+
+    <div class="product-grid" id="productGrid"></div>
+  </section>
+
+  <!-- ================= EDITORIAL ================= -->
+  <section class="editorial" id="journal" aria-label="Editorial">
+    <div class="editorial__media parallax" data-parallax>
+      <img src="assets/images/silk-01.jpg" alt="Silk textile draped in natural light" loading="lazy" onerror="this.style.display='none'">
+    </div>
+    <div class="editorial__text">
+      <p class="eyebrow reveal" data-reveal>From the Journal</p>
+      <h2 class="reveal" data-reveal>On the discipline<br>of doing less.</h2>
+      <p class="reveal" data-reveal>Our chemists are instructed, above all else, to remove. A CIRENNE formula reaches its final version not when nothing more can be added, but when nothing more can be taken away.</p>
+      <a href="#" class="text-link reveal" data-reveal>Read the full essay →</a>
+    </div>
+  </section>
+
+  <!-- ================= PHILOSOPHY ================= -->
+  <section class="philosophy" id="philosophy" aria-label="Brand philosophy">
+    <div class="divider-ridge divider-ridge--light" aria-hidden="true"></div>
+    <p class="eyebrow reveal center" data-reveal>Philosophy</p>
+    <blockquote class="philosophy__quote reveal center" data-reveal>
+      "We do not improve on the mountain.<br>We simply carry it down."
+    </blockquote>
+    <p class="philosophy__attr reveal center" data-reveal>— Founder's Note, 2011</p>
+  </section>
+
+  <!-- ================= TIMELINE ================= -->
+  <section class="timeline" aria-label="House history">
+    <p class="eyebrow reveal center" data-reveal>A Brief History</p>
+    <h2 class="section-title reveal center" data-reveal>Nineteen years above the valley.</h2>
+    <div class="timeline__list">
+      <div class="timeline__item reveal" data-reveal>
+        <span class="timeline__year">2011</span>
+        <p>A research station at 2,400m becomes the first CIRENNE laboratory.</p>
+      </div>
+      <div class="timeline__item reveal" data-reveal>
+        <span class="timeline__year">2014</span>
+        <p>The Hydrating Serum is formulated after three years of botanical cataloguing.</p>
+      </div>
+      <div class="timeline__item reveal" data-reveal>
+        <span class="timeline__year">2018</span>
+        <p>CIRENNE opens its atelier for hand-blown glass vessels near the source spring.</p>
+      </div>
+      <div class="timeline__item reveal" data-reveal>
+        <span class="timeline__year">2023</span>
+        <p>The full six-formula ritual collection is completed and released in Zurich.</p>
+      </div>
+      <div class="timeline__item reveal" data-reveal>
+        <span class="timeline__year">2026</span>
+        <p>CIRENNE is worn in over thirty countries, formulated in exactly one valley.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TESTIMONIALS ================= -->
+  <section class="testimonials" aria-label="Testimonials">
+    <p class="eyebrow reveal center" data-reveal>Words From the House's Circle</p>
+    <div class="testimonials__track" id="testimonialTrack">
+      <blockquote class="testimonial reveal" data-reveal>
+        <p>"The Night Repair Oil is the first product that has made my skin feel calmer by morning, not merely softer."</p>
+        <cite>— A. Vogt, Zurich</cite>
+      </blockquote>
+      <blockquote class="testimonial reveal" data-reveal>
+        <p>"There is a restraint to this brand that reads as confidence. Nothing is oversold, and nothing needs to be."</p>
+        <cite>— M. Laurent, Geneva</cite>
+      </blockquote>
+      <blockquote class="testimonial reveal" data-reveal>
+        <p>"I have worn the Botanical Mist through three winters. It remains the only ritual I have not once abandoned."</p>
+        <cite>— S. Roux, Paris</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ================= NEWSLETTER ================= -->
+  <section class="newsletter" aria-label="Newsletter signup">
+    <p class="eyebrow reveal center" data-reveal>Correspondence</p>
+    <h2 class="section-title reveal center" data-reveal>Notes from the altitude,<br>rarely sent.</h2>
+    <form class="newsletter__form reveal center" data-reveal id="newsletterForm">
+      <label for="newsletterEmail" class="sr-only">Email address</label>
+      <input type="email" id="newsletterEmail" placeholder="Your email address" required autocomplete="email">
+      <button type="submit" class="btn btn--dark magnetic">Subscribe</button>
+    </form>
+    <p class="newsletter__note" id="newsletterNote" role="status" aria-live="polite"></p>
+  </section>
+
+  <!-- ================= INSTAGRAM GALLERY ================= -->
+  <section class="gallery" aria-label="Instagram gallery">
+    <p class="eyebrow reveal center" data-reveal>@cirenne.skin</p>
+    <div class="gallery__grid">
+      <div class="gallery__item reveal" data-reveal><img src="assets/images/mountain-02.jpg" alt="Alpine landscape" loading="lazy" onerror="this.style.display='none'"></div>
+      <div class="gallery__item reveal" data-reveal><img src="assets/images/silk-02.jpg" alt="Draped silk texture" loading="lazy" onerror="this.style.display='none'"></div>
+      <div class="gallery__item reveal" data-reveal><img src="assets/images/stone-01.jpg" alt="Mineral stone detail" loading="lazy" onerror="this.style.display='none'"></div>
+      <div class="gallery__item reveal" data-reveal><img src="assets/images/mountain-03.jpg" alt="Alpine ridge at dusk" loading="lazy" onerror="this.style.display='none'"></div>
+      <div class="gallery__item reveal" data-reveal><img src="assets/images/water-01.jpg" alt="Glacial spring water" loading="lazy" onerror="this.style.display='none'"></div>
+      <div class="gallery__item reveal" data-reveal><img src="assets/images/silk-01.jpg" alt="Natural silk fabric" loading="lazy" onerror="this.style.display='none'"></div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="faq" id="faq" aria-label="Frequently asked questions">
+    <p class="eyebrow reveal center" data-reveal>Questions</p>
+    <h2 class="section-title reveal center" data-reveal>Before you begin the ritual.</h2>
+    <div class="faq__list" id="faqList">
+      <div class="faq__item reveal" data-reveal>
+        <button class="faq__question" aria-expanded="false">
+          <span>Is CIRENNE suitable for sensitive skin?</span>
+          <span class="faq__icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq__answer">
+          <p>Every formula is fragrance-neutral at the base and tested across a range of skin sensitivities. We recommend patch-testing the Botanical Mist first if you have reactive skin.</p>
+        </div>
+      </div>
+      <div class="faq__item reveal" data-reveal>
+        <button class="faq__question" aria-expanded="false">
+          <span>Where are your ingredients sourced?</span>
+          <span class="faq__icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq__answer">
+          <p>Exclusively from a single protected alpine valley above 2,000 metres, harvested under a rotational schedule that allows full ecological recovery between seasons.</p>
+        </div>
+      </div>
+      <div class="faq__item reveal" data-reveal>
+        <button class="faq__question" aria-expanded="false">
+          <span>Do you test on animals?</span>
+          <span class="faq__icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq__answer">
+          <p>Never, at any stage of formulation, in any market in which we operate.</p>
+        </div>
+      </div>
+      <div class="faq__item reveal" data-reveal>
+        <button class="faq__question" aria-expanded="false">
+          <span>What is your shipping policy?</span>
+          <span class="faq__icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq__answer">
+          <p>Orders are hand-packed and shipped within two business days, arriving in temperature-stable packaging to protect formula integrity.</p>
+        </div>
+      </div>
+      <div class="faq__item reveal" data-reveal>
+        <button class="faq__question" aria-expanded="false">
+          <span>Can I return an opened product?</span>
+          <span class="faq__icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq__answer">
+          <p>Yes, within thirty days. We would rather you try a formula honestly than keep one that is wrong for you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="contact" id="contact" aria-label="Contact">
+    <div class="contact__grid">
+      <div class="contact__text">
+        <p class="eyebrow reveal" data-reveal>Contact</p>
+        <h2 class="reveal" data-reveal>Write to the valley.</h2>
+        <p class="reveal" data-reveal>For press, partnerships, or formulation questions, our correspondence team replies within two business days.</p>
+        <ul class="contact__details reveal" data-reveal>
+          <li>hello@cirenne.example</li>
+          <li>+41 44 000 00 00</li>
+          <li>Via della Valle 12, 7000 Graubünden</li>
+        </ul>
+      </div>
+      <form class="contact__form reveal" data-reveal id="contactForm">
+        <label for="contactName" class="sr-only">Name</label>
+        <input type="text" id="contactName" placeholder="Name" required>
+        <label for="contactEmail" class="sr-only">Email</label>
+        <input type="email" id="contactEmail" placeholder="Email" required>
+        <label for="contactMessage" class="sr-only">Message</label>
+        <textarea id="contactMessage" placeholder="Message" rows="5" required></textarea>
+        <button type="submit" class="btn btn--dark magnetic">Send Message</button>
+        <p class="contact__note" id="contactNote" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
 <footer class="footer">
-
-<div class="container">
-
-<div class="footer-grid">
-
-<!-- Brand -->
-
-<div class="footer-column">
-
-<h2 class="footer-logo">
-CIRENNE
-</h2>
-
-<p>
-Luxury skincare inspired by Alpine nature,
-scientific innovation and timeless elegance.
-Every product is designed to transform your
-daily skincare ritual into an unforgettable experience.
-</p>
-
-</div>
-
-<!-- Shop -->
-
-<div class="footer-column">
-
-<h3>Shop</h3>
-
-<ul>
-
-<li><a href="#">Serums</a></li>
-
-<li><a href="#">Creams</a></li>
-
-<li><a href="#">Gift Sets</a></li>
-
-<li><a href="#">Accessories</a></li>
-
-</ul>
-
-</div>
-
-<!-- Company -->
-
-<div class="footer-column">
-
-<h3>Company</h3>
-
-<ul>
-
-<li><a href="#">About Us</a></li>
-
-<li><a href="#">Journal</a></li>
-
-<li><a href="#">Ingredients</a></li>
-
-<li><a href="#">Sustainability</a></li>
-
-</ul>
-
-</div>
-
-<!-- Support -->
-
-<div class="footer-column">
-
-<h3>Support</h3>
-
-<ul>
-
-<li><a href="#">Shipping</a></li>
-
-<li><a href="#">Returns</a></li>
-
-<li><a href="#">Privacy Policy</a></li>
-
-<li><a href="#">Contact</a></li>
-
-</ul>
-
-</div>
-
-</div>
-
-<div class="footer-bottom">
-
-<p>
-
-© 2026 CIRENNE.
-All Rights Reserved.
-
-</p>
-
-<div class="social-links">
-
-<a href="#">Instagram</a>
-
-<a href="#">Pinterest</a>
-
-<a href="#">TikTok</a>
-
-<a href="#">YouTube</a>
-
-</div>
-
-</div>
-
-</div>
-
+  <svg class="footer__ridge" viewBox="0 0 1600 120" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,100 L160,70 L280,90 L420,40 L560,85 L700,25 L860,70 L980,60 L1120,15 L1280,70 L1440,45 L1600,60" fill="none" stroke="#B8985A" stroke-width="1"/>
+  </svg>
+  <div class="footer__grid">
+    <div class="footer__brand">
+      <p class="footer__logo">CIRENNE</p>
+      <p>Formulated at altitude.<br>Graubünden, Switzerland.</p>
+    </div>
+    <div class="footer__col">
+      <h4>House</h4>
+      <a href="#about">The House</a>
+      <a href="#philosophy">Philosophy</a>
+      <a href="#journal">Editorial</a>
+    </div>
+    <div class="footer__col">
+      <h4>Shop</h4>
+      <a href="#collection">Collection</a>
+      <a href="#ingredients">Ingredients</a>
+      <a href="#faq">Shipping &amp; Returns</a>
+    </div>
+    <div class="footer__col">
+      <h4>Connect</h4>
+      <a href="#contact">Contact</a>
+      <a href="#">Instagram</a>
+      <a href="#">Journal</a>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <p>&copy; 2026 CIRENNE. All rights reserved.</p>
+    <div class="footer__legal">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+  </div>
 </footer>
 
-<!-- ===========================
-END OF WEBSITE
-=========================== -->
+<!-- ================= BACK TO TOP ================= -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+</button>
+
+<!-- ================= SEARCH DRAWER ================= -->
+<div class="drawer drawer--search" id="searchDrawer" aria-hidden="true">
+  <div class="drawer__header">
+    <label for="searchInput" class="sr-only">Search products</label>
+    <input type="text" id="searchInput" placeholder="Search the collection…" autocomplete="off">
+    <button class="drawer__close" id="searchClose" aria-label="Close search">&times;</button>
+  </div>
+  <div class="drawer__body" id="searchResults"></div>
+</div>
+
+<!-- ================= WISHLIST DRAWER ================= -->
+<div class="drawer drawer--wishlist" id="wishlistDrawer" aria-hidden="true">
+  <div class="drawer__header">
+    <h3>Wishlist</h3>
+    <button class="drawer__close" id="wishlistClose" aria-label="Close wishlist">&times;</button>
+  </div>
+  <div class="drawer__body" id="wishlistItems">
+    <p class="drawer__empty">Your wishlist is empty.</p>
+  </div>
+</div>
+
+<!-- ================= CART DRAWER ================= -->
+<div class="drawer drawer--cart" id="cartDrawer" aria-hidden="true">
+  <div class="drawer__header">
+    <h3>Shopping Bag</h3>
+    <button class="drawer__close" id="cartClose" aria-label="Close bag">&times;</button>
+  </div>
+  <div class="drawer__body" id="cartItems">
+    <p class="drawer__empty">Your bag is empty.</p>
+  </div>
+  <div class="drawer__footer" id="cartFooter" hidden>
+    <div class="drawer__total">
+      <span>Total</span>
+      <span id="cartTotal">$0</span>
+    </div>
+    <button class="btn btn--dark drawer__checkout">Checkout</button>
+  </div>
+</div>
+
+<!-- ================= QUICK VIEW MODAL ================= -->
+<div class="modal" id="quickViewModal" aria-hidden="true">
+  <div class="modal__backdrop" id="quickViewBackdrop"></div>
+  <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="quickViewTitle">
+    <button class="modal__close" id="quickViewClose" aria-label="Close quick view">&times;</button>
+    <div class="modal__media">
+      <img id="quickViewImg" src="" alt="" onerror="this.style.display='none'">
+    </div>
+    <div class="modal__content">
+      <p class="eyebrow" id="quickViewEyebrow">Ritual</p>
+      <h3 id="quickViewTitle"></h3>
+      <p id="quickViewDesc"></p>
+      <p class="modal__price" id="quickViewPrice"></p>
+      <div class="modal__actions">
+        <button class="btn btn--dark" id="quickViewAddCart">Add to Bag</button>
+        <button class="btn btn--line" id="quickViewWishlist">Add to Wishlist</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
 
 <script src="script.js"></script>
-
 </body>
-</html>
+    </html>
+            
