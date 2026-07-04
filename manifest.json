@@ -1,0 +1,14 @@
+{
+  "name": "CIRENNE — Alpine Botanical Skincare",
+  "short_name": "CIRENNE",
+  "description": "Luxury alpine botanical skincare, formulated at altitude from rare glacial flora.",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#F7F3EC",
+  "theme_color": "#3A3835",
+  "lang": "en",
+  "categories": ["shopping", "beauty", "lifestyle"],
+  "icons": []
+}
