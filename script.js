@@ -1,256 +1,569 @@
-(function () {
-  'use strict';
+"use strict";
 
-  /* =========================================================
-     Mobile navigation
-  ========================================================= */
-  const navToggle = document.getElementById('navToggle');
-  const mobileMenu = document.getElementById('mobileMenu');
+/*=========================================
+  CIRENNE LUXURY WEBSITE
+  JavaScript Part 1
+=========================================*/
 
-  function closeMobileMenu() {
-    navToggle.classList.remove('open');
-    navToggle.setAttribute('aria-expanded', 'false');
-    mobileMenu.classList.remove('open');
-  }
+document.addEventListener("DOMContentLoaded", () => {
 
-  navToggle.addEventListener('click', () => {
-    const isOpen = mobileMenu.classList.toggle('open');
-    navToggle.classList.toggle('open', isOpen);
-    navToggle.setAttribute('aria-expanded', String(isOpen));
-  });
+const $ = (selector) => document.querySelector(selector);
+const $$ = (selector) => document.querySelectorAll(selector);
 
-  mobileMenu.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', closeMobileMenu);
-  });
+/*=========================================
+ NAVIGATION
+=========================================*/
 
-  /* =========================================================
-     Scroll reveal (IntersectionObserver)
-  ========================================================= */
-  const revealEls = document.querySelectorAll('.reveal');
+const navToggle = $("#navToggle");
+const mobileMenu = $("#mobileMenu");
 
-  if ('IntersectionObserver' in window) {
-    const revealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry, i) => {
-          if (entry.isIntersecting) {
-            const el = entry.target;
-            const delay = (i % 3) * 90;
-            setTimeout(() => el.classList.add('in-view'), delay);
-            revealObserver.unobserve(el);
-          }
-        });
-      },
-      { threshold: 0.15, rootMargin: '0px 0px -60px 0px' }
-    );
-    revealEls.forEach((el) => revealObserver.observe(el));
-  } else {
-    revealEls.forEach((el) => el.classList.add('in-view'));
-  }
+if(navToggle && mobileMenu){
 
-  /* =========================================================
-     Hero liquid blob — mouse parallax
-  ========================================================= */
-  const blobWrap = document.getElementById('blobWrap');
-  const blob = document.getElementById('blob');
+navToggle.addEventListener("click",()=>{
 
-  if (blobWrap && blob && window.matchMedia('(hover: hover)').matches) {
-    blobWrap.addEventListener('mousemove', (e) => {
-      const rect = blobWrap.getBoundingClientRect();
-      const px = (e.clientX - rect.left) / rect.width - 0.5;
-      const py = (e.clientY - rect.top) / rect.height - 0.5;
-      blob.style.setProperty('--tx', `${px * 22}px`);
-      blob.style.setProperty('--ty', `${py * 18}px`);
-      blob.style.setProperty('--rot', `${px * 10}deg`);
-    });
-    blobWrap.addEventListener('mouseleave', () => {
-      blob.style.setProperty('--tx', '0px');
-      blob.style.setProperty('--ty', '0px');
-      blob.style.setProperty('--rot', '0deg');
-    });
-  }
+navToggle.classList.toggle("active");
+mobileMenu.classList.toggle("active");
 
-  /* =========================================================
-     Product card tilt
-  ========================================================= */
-  const tiltCards = document.querySelectorAll('[data-tilt]');
+});
 
-  if (window.matchMedia('(hover: hover)').matches) {
-    tiltCards.forEach((card) => {
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const px = (e.clientX - rect.left) / rect.width - 0.5;
-        const py = (e.clientY - rect.top) / rect.height - 0.5;
-        card.style.setProperty('--ry', `${px * 10}deg`);
-        card.style.setProperty('--rx', `${-py * 10}deg`);
-      });
-      card.addEventListener('mouseleave', () => {
-        card.style.setProperty('--rx', '0deg');
-        card.style.setProperty('--ry', '0deg');
-      });
-    });
-  }
+$$(".mobile-menu a").forEach(link=>{
 
-  /* =========================================================
-     Accordion (FAQ)
-  ========================================================= */
-  const accordionTriggers = document.querySelectorAll('.accordion-trigger');
+link.addEventListener("click",()=>{
 
-  accordionTriggers.forEach((trigger) => {
-    const panel = trigger.nextElementSibling;
-    panel.style.maxHeight = '0px';
+mobileMenu.classList.remove("active");
+navToggle.classList.remove("active");
 
-    trigger.addEventListener('click', () => {
-      const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+});
 
-      accordionTriggers.forEach((otherTrigger) => {
-        if (otherTrigger !== trigger) {
-          otherTrigger.setAttribute('aria-expanded', 'false');
-          otherTrigger.nextElementSibling.style.maxHeight = '0px';
-        }
-      });
+});
 
-      trigger.setAttribute('aria-expanded', String(!isOpen));
-      panel.style.maxHeight = isOpen ? '0px' : `${panel.scrollHeight}px`;
-    });
-  });
+}
 
-  /* =========================================================
-     Newsletter form
-  ========================================================= */
-  const newsletterForm = document.getElementById('newsletterForm');
-  const newsletterEmail = document.getElementById('newsletterEmail');
-  const newsletterMessage = document.getElementById('newsletterMessage');
+/*=========================================
+ HEADER SCROLL EFFECT
+=========================================*/
 
-  newsletterForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const value = newsletterEmail.value.trim();
-    const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+const header = $("header");
 
-    if (!isValid) {
-      newsletterMessage.textContent = 'Please enter a valid email address.';
-      newsletterMessage.classList.add('error');
-      return;
-    }
+window.addEventListener("scroll",()=>{
 
-    newsletterMessage.classList.remove('error');
-    newsletterMessage.textContent = "You're on the list. Welcome to the source.";
-    newsletterForm.querySelector('button').disabled = true;
-    newsletterEmail.disabled = true;
-  });
+if(window.scrollY>60){
 
-  /* =========================================================
-     Cart drawer
-  ========================================================= */
-  const cartOverlay = document.getElementById('cartOverlay');
-  const cartDrawer = document.getElementById('cartDrawer');
-  const cartClose = document.getElementById('cartClose');
-  const cartItemsEl = document.getElementById('cartItems');
-  const cartEmptyEl = document.getElementById('cartEmpty');
-  const cartTotalEl = document.getElementById('cartTotal');
-  const shopBtn = document.getElementById('shopBtn');
-  const mobileShopBtn = document.getElementById('mobileShopBtn');
-  const checkoutBtn = document.getElementById('checkoutBtn');
-  const addToCartButtons = document.querySelectorAll('.add-to-cart');
+header.classList.add("scrolled");
 
-  let cart = [];
+}else{
 
-  function openCart() {
-    cartDrawer.classList.add('open');
-    cartOverlay.classList.add('open');
-    cartDrawer.setAttribute('aria-hidden', 'false');
-  }
+header.classList.remove("scrolled");
 
-  function closeCart() {
-    cartDrawer.classList.remove('open');
-    cartOverlay.classList.remove('open');
-    cartDrawer.setAttribute('aria-hidden', 'true');
-  }
+}
 
-  function parsePrice(str) {
-    return Number(str.replace(/[^0-9.]/g, ''));
-  }
+});
 
-  function renderCart() {
-    cartItemsEl.innerHTML = '';
+/*=========================================
+ BACK TO TOP
+=========================================*/
 
-    if (cart.length === 0) {
-      cartItemsEl.appendChild(cartEmptyEl);
-      cartTotalEl.textContent = '$0';
-      return;
-    }
+const backTop=$("#backToTop");
 
-    let total = 0;
+if(backTop){
 
-    cart.forEach((item, index) => {
-      total += item.price;
+window.addEventListener("scroll",()=>{
 
-      const row = document.createElement('div');
-      row.className = 'cart-item';
-      row.innerHTML = `
-        <div class="cart-item-info">
-          <span class="cart-item-name">${item.name}</span>
-          <span class="cart-item-kind">${item.kind}</span>
-          <button class="cart-item-remove" data-index="${index}">Remove</button>
-        </div>
-        <span class="cart-item-price">$${item.price}</span>
-      `;
-      cartItemsEl.appendChild(row);
-    });
+if(window.scrollY>500){
 
-    cartTotalEl.textContent = `$${total}`;
+backTop.classList.add("show");
 
-    cartItemsEl.querySelectorAll('.cart-item-remove').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const idx = Number(btn.getAttribute('data-index'));
-        cart.splice(idx, 1);
-        renderCart();
-      });
-    });
-  }
+}else{
 
-  addToCartButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const card = btn.closest('.product-card');
-      const name = card.getAttribute('data-name');
-      const kind = card.getAttribute('data-kind');
-      const price = parsePrice(card.getAttribute('data-price'));
+backTop.classList.remove("show");
 
-      cart.push({ name, kind, price });
-      renderCart();
-      openCart();
-    });
-  });
+}
 
-  shopBtn.addEventListener('click', openCart);
-  mobileShopBtn.addEventListener('click', () => {
-    closeMobileMenu();
-    document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
-  });
-  cartClose.addEventListener('click', closeCart);
-  cartOverlay.addEventListener('click', closeCart);
+});
 
-  checkoutBtn.addEventListener('click', () => {
-    if (cart.length === 0) return;
-    alert('This is a front-end demo. Checkout would continue to payment here.');
-  });
+backTop.addEventListener("click",()=>{
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeCart();
-  });
+window.scrollTo({
 
-  renderCart();
+top:0,
 
-  /* =========================================================
-     Back to top button
-  ========================================================= */
-  const backToTop = document.getElementById('backToTop');
+behavior:"smooth"
 
-  window.addEventListener('scroll', () => {
-    backToTop.classList.toggle('visible', window.scrollY > 600);
-  });
+});
 
-  backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-})();
-                                          
+});
+
+}
+
+/*=========================================
+ SCROLL REVEAL
+=========================================*/
+
+const reveals=$$(".reveal");
+
+const observer=new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("active");
+
+}
+
+});
+
+},
+
+{
+
+threshold:.15
+
+});
+
+reveals.forEach(item=>observer.observe(item));
+
+});
+/*=========================================
+ HERO PARALLAX
+=========================================*/
+
+const hero = document.querySelector(".hero");
+
+if(hero){
+
+hero.addEventListener("mousemove",(e)=>{
+
+const x=(window.innerWidth/2-e.clientX)/40;
+const y=(window.innerHeight/2-e.clientY)/40;
+
+const bottle=document.querySelector(".hero-bottle");
+const glow=document.querySelector(".hero-glow");
+
+if(bottle){
+
+bottle.style.transform=
+`translate(${x}px,${y}px)`;
+
+}
+
+if(glow){
+
+glow.style.transform=
+`translate(${x/2}px,${y/2}px)`;
+
+}
+
+});
+
+}
+
+/*=========================================
+ MAGNETIC BUTTONS
+=========================================*/
+
+document.querySelectorAll(".btn").forEach(btn=>{
+
+btn.addEventListener("mousemove",(e)=>{
+
+const rect=btn.getBoundingClientRect();
+
+const x=e.clientX-rect.left-rect.width/2;
+
+const y=e.clientY-rect.top-rect.height/2;
+
+btn.style.transform=
+`translate(${x*0.15}px,${y*0.15}px)`;
+
+});
+
+btn.addEventListener("mouseleave",()=>{
+
+btn.style.transform="translate(0,0)";
+
+});
+
+});
+
+/*=========================================
+ PRODUCT IMAGE FLOAT
+=========================================*/
+
+document.querySelectorAll(".product-image img").forEach(img=>{
+
+let angle=0;
+
+setInterval(()=>{
+
+angle+=0.02;
+
+img.style.transform=
+`translateY(${Math.sin(angle)*6}px)`;
+
+},30);
+
+});
+
+/*=========================================
+ NUMBER COUNTER
+=========================================*/
+
+const counters=document.querySelectorAll("[data-counter]");
+
+const counterObserver=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(!entry.isIntersecting)return;
+
+const el=entry.target;
+
+const target=Number(el.dataset.counter);
+
+let count=0;
+
+const speed=target/120;
+
+const update=()=>{
+
+count+=speed;
+
+if(count<target){
+
+el.textContent=Math.floor(count);
+
+requestAnimationFrame(update);
+
+}else{
+
+el.textContent=target;
+
+}
+
+};
+
+update();
+
+counterObserver.unobserve(el);
+
+});
+
+});
+
+counters.forEach(c=>counterObserver.observe(c));
+
+/*=========================================
+ IMAGE FADE-IN
+=========================================*/
+
+document.querySelectorAll("img").forEach(img=>{
+
+img.onload=()=>{
+
+img.style.opacity="1";
+
+};
+
+});
+
+/*=========================================
+ PAGE LOADED
+=========================================*/
+
+window.addEventListener("load",()=>{
+
+document.body.classList.add("loaded");
+
+});
+/*=========================================
+ SCROLL PROGRESS BAR
+=========================================*/
+
+const progressBar=document.createElement("div");
+
+progressBar.id="scroll-progress";
+
+progressBar.style.position="fixed";
+progressBar.style.top="0";
+progressBar.style.left="0";
+progressBar.style.height="4px";
+progressBar.style.width="0%";
+progressBar.style.background="linear-gradient(90deg,#B89A63,#E8D2A8)";
+progressBar.style.zIndex="99999";
+progressBar.style.transition="width .15s linear";
+
+document.body.appendChild(progressBar);
+
+window.addEventListener("scroll",()=>{
+
+const scrollTop=window.scrollY;
+
+const docHeight=document.documentElement.scrollHeight-window.innerHeight;
+
+const percent=(scrollTop/docHeight)*100;
+
+progressBar.style.width=percent+"%";
+
+});
+
+/*=========================================
+ ACTIVE NAV LINK
+=========================================*/
+
+const sections=document.querySelectorAll("section");
+const navLinks=document.querySelectorAll(".nav-links a");
+
+window.addEventListener("scroll",()=>{
+
+let current="";
+
+sections.forEach(section=>{
+
+const top=section.offsetTop-120;
+
+if(window.scrollY>=top){
+
+current=section.getAttribute("id");
+
+}
+
+});
+
+navLinks.forEach(link=>{
+
+link.classList.remove("active");
+
+if(link.getAttribute("href")==="#"+current){
+
+link.classList.add("active");
+
+}
+
+});
+
+});
+
+/*=========================================
+ BUTTON RIPPLE EFFECT
+=========================================*/
+
+document.querySelectorAll(".btn").forEach(button=>{
+
+button.addEventListener("click",(e)=>{
+
+const ripple=document.createElement("span");
+
+const rect=button.getBoundingClientRect();
+
+const size=Math.max(rect.width,rect.height);
+
+ripple.style.width=size+"px";
+
+ripple.style.height=size+"px";
+
+ripple.style.position="absolute";
+
+ripple.style.borderRadius="50%";
+
+ripple.style.left=e.clientX-rect.left-size/2+"px";
+
+ripple.style.top=e.clientY-rect.top-size/2+"px";
+
+ripple.style.background="rgba(255,255,255,.35)";
+
+ripple.style.pointerEvents="none";
+
+ripple.style.transform="scale(0)";
+
+ripple.style.transition=".6s";
+
+button.appendChild(ripple);
+
+requestAnimationFrame(()=>{
+
+ripple.style.transform="scale(4)";
+
+ripple.style.opacity="0";
+
+});
+
+setTimeout(()=>{
+
+ripple.remove();
+
+},600);
+
+});
+
+});
+
+/*=========================================
+ PARALLAX IMAGES
+=========================================*/
+
+window.addEventListener("scroll",()=>{
+
+document.querySelectorAll(".parallax-image img").forEach(img=>{
+
+const speed=window.scrollY*0.15;
+
+img.style.transform=`translateY(${speed}px)`;
+
+});
+
+});
+
+/*=========================================
+ CONSOLE MESSAGE
+=========================================*/
+
+console.log("%cCIRENNE","font-size:40px;color:#B89A63;font-weight:bold;");
+console.log("%cLuxury Website Developed Professionally.","font-size:16px;color:#666;");
+/*=========================================
+  JS PART 4 - FINAL POLISH
+=========================================*/
+
+/*=========================================
+ SMOOTH SCROLL LINKS
+=========================================*/
+
+document.querySelectorAll('a[href^="#"]').forEach(link=>{
+
+link.addEventListener("click",function(e){
+
+const target=document.querySelector(this.getAttribute("href"));
+
+if(target){
+
+e.preventDefault();
+
+target.scrollIntoView({
+
+behavior:"smooth",
+
+block:"start"
+
+});
+
+}
+
+});
+
+});
+
+/*=========================================
+ LAZY IMAGE EFFECT
+=========================================*/
+
+const lazyImages=document.querySelectorAll("img");
+
+const lazyObserver=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("loaded");
+
+lazyObserver.unobserve(entry.target);
+
+}
+
+});
+
+},{threshold:.2});
+
+lazyImages.forEach(img=>lazyObserver.observe(img));
+
+/*=========================================
+ PRODUCT HOVER GLOW
+=========================================*/
+
+document.querySelectorAll(".product-card").forEach(card=>{
+
+card.addEventListener("mousemove",(e)=>{
+
+const rect=card.getBoundingClientRect();
+
+const x=e.clientX-rect.left;
+
+const y=e.clientY-rect.top;
+
+card.style.background=
+`radial-gradient(circle at ${x}px ${y}px,
+rgba(184,154,99,.15),
+white 45%)`;
+
+});
+
+card.addEventListener("mouseleave",()=>{
+
+card.style.background="#fff";
+
+});
+
+});
+
+/*=========================================
+ PRELOADER
+=========================================*/
+
+window.addEventListener("load",()=>{
+
+const loader=document.querySelector(".loader");
+
+if(loader){
+
+loader.style.opacity="0";
+
+setTimeout(()=>{
+
+loader.remove();
+
+},600);
+
+}
+
+});
+
+/*=========================================
+ PERFORMANCE
+=========================================*/
+
+window.addEventListener("resize",()=>{
+
+document.body.classList.add("resizing");
+
+clearTimeout(window.resizeTimer);
+
+window.resizeTimer=setTimeout(()=>{
+
+document.body.classList.remove("resizing");
+
+},300);
+
+});
+
+/*=========================================
+ COPYRIGHT YEAR
+=========================================*/
+
+const year=document.getElementById("year");
+
+if(year){
+
+year.textContent=new Date().getFullYear();
+
+}
+
+/*=========================================
+ WELCOME
+=========================================*/
+
+console.clear();
+
+console.log("%cCIRENNE","font-size:42px;font-weight:bold;color:#B89A63;");
+
+console.log("%cLuxury Cosmetic Experience Loaded.","font-size:18px;color:#555;");
+
+console.log("%cDesigned with ❤️","font-size:15px;color:#888;");
