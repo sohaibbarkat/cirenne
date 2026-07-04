@@ -872,3 +872,38 @@ opacity:1;
 }
 
 }
+/* ===== Floating Luxury Stones ===== */
+
+.floating-stone{
+position:absolute;
+width:180px;
+border-radius:20px;
+opacity:.18;
+filter:blur(.3px);
+animation:stoneFloat 10s ease-in-out infinite;
+}
+
+.stone-1{
+top:10%;
+left:3%;
+transform:rotate(-18deg);
+}
+
+.stone-2{
+right:5%;
+bottom:8%;
+transform:rotate(18deg);
+animation-delay:2s;
+}
+
+@keyframes stoneFloat{
+
+0%,100%{
+transform:translateY(0) rotate(-18deg);
+}
+
+50%{
+transform:translateY(-18px) rotate(-14deg);
+}
+
+}
